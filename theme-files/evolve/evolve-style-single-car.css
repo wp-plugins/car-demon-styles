@@ -1,0 +1,393 @@
+/* CSS Document */
+.evolve_car_body {
+	padding: 5px;
+	clear: both;
+	float: left;
+	width: 700px;
+	font: 14px/1.231 arial,helvetica,clean,sans-serif;
+}
+.tab_content {
+	width:640px;
+}
+.photos {
+	width:358px;
+	float:left;
+}
+.main_photo {
+	margin: 3px;
+	margin-left:0px;
+	clear: both;
+	float: left;
+	height: 271px;
+	width: 358px;
+	cursor:pointer;
+}
+.main_photo img {
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border:solid;
+	border-width:1px;
+	border-color:#AAA;
+	border-bottom: 2px solid #CCC;
+}
+.photo_thumbs {
+	width: 358px;
+	height:65px;
+	float:left;
+	overflow: auto;
+	white-space: nowrap;
+}
+.evolve_thumbs {
+	margin-right:3px;
+}
+.car_title {
+	font-size:125%;
+	font-weight:bold;
+	color:#006699;
+	float:left;
+	width:100%;
+}
+.car_description {
+	margin: 3px;
+	margin-left:10px;
+	float: left;
+	height: 335px;
+	width: 275px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border:solid;
+	border-width:1px;
+	border-color:#AAA;
+	border-bottom: 2px solid #CCC;
+	padding: 3px;
+}
+.description_left{
+	margin-top: 10px;
+	float: left;
+	width: 100%;
+}
+.description_right{
+	float: left;
+	width: 100%;
+}
+.description_label {
+	float: left;
+	width: 50%;
+}
+.description_text {
+	float: left;
+	width: 50%;
+}
+.description_text_vin {
+	float: left;
+	width:100%;
+	text-align:right;
+}
+.price {
+	float: left;
+	width: 100%;
+	margin-left:1%;
+	margin-top:5px;
+	padding-left:2%;
+}
+.price_label {
+	width: 50%;
+	font-size:115%;
+	color:#555;
+	float:left;
+}
+.price_value {
+	width: 50%;
+	font-size:115%;
+	color:#222;
+	float:left;
+}
+.price_line {
+	float:left;
+	width:90%;
+	border-bottom:solid;
+	border-bottom-color:#CCCCCC;
+	height:1px;
+	line-height:1px;
+}
+.final_price_label {
+	width: 70%;
+	font-size:120%;
+	font-weight:bold;
+	color:#050;
+	float:left;
+}
+.final_price_value {
+	width: 70%;
+	font-size:140%;
+	font-weight:bold;
+	color:#96262B;
+	float:right;
+	text-align:left;
+}
+.car_contact {
+	width:640px;
+	height:100px;
+	float:left;
+	padding:5px;
+	margin-top:5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border:solid;
+	border-width:1px;
+	border-color:#AAA;
+	border-bottom: 2px solid #CCC;
+}
+.car_contact_info {
+	width:45%;
+	float:left;
+	font-size:125%;
+	font-weight:bold;
+	color:#006699;
+	padding-top:20px;
+	padding-left:5%;
+}
+.car_contact_buttons {
+	width:50%;
+	float:left;	
+	margin-top:20px;
+}
+.tab_container {
+	float:left;
+	width:592px;
+}
+#tablist {
+	padding: 3px 0;
+	margin-left: 0;
+	font: bold 12px Verdana, sans-serif;
+	margin-bottom:0px;
+	margin-top:5px;
+}
+.tab_active{
+	background: #FFFFFF !important;
+}
+.tab_inactive{
+	list-style: none;
+	margin: 0;
+	display: inline;
+	padding: 3px 0.5em;
+	margin-left: 3px;
+	border: 1px solid #CCC;
+	border-bottom: none;
+	background: #DDE;
+	text-decoration: none;
+	cursor:pointer;
+	-moz-border-top-left-radius: 5px;
+	-moz-border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+#tablist li:hover {
+	color: #000;
+	background: #AAE;
+	border-color: #227;
+}
+.tab_current {
+	list-style: none;
+	margin: 0;
+	display: inline;
+	padding: 3px 0.5em;
+	margin-left: 3px;
+	border: 1px solid #778;
+	text-decoration: none;
+	cursor:pointer;
+	background: white;
+	border-bottom: 1px solid white;
+}
+.tab_content_area_container {
+	margin-top:0px;
+	margin-left:0px;
+	border-top:none;
+	float:left;
+	width:650px;
+	margin-right:10px;
+	background-color:#FFFFFF;
+	border-bottom: 2px solid #CCC;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.tab_content_area {
+	padding:10px;
+	float:left;
+	width:590px;
+}
+.tab_inactive_content {
+	display:none;
+}
+.sidebar-right {
+	float:left;
+	margin-left:5%;
+}
+.sidebar-right {
+	float:left;
+	margin-left:5%;
+}
+#demon-container {
+	width:62.5%;
+	float:left;
+}
+.car_demon_photo_box {
+	display:none;
+	background:#000000;
+	width:800px;
+	height:600px;		
+	padding: 9px;
+	border: 3px solid gray;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	-moz-box-shadow: 0 0 5px rgba(0,0,0, .3);
+	-webkit-box-shadow: 0 0 5px 
+	rgba(0, 0, 0, .3);
+	box-shadow: 0 0 5px 
+	rgba(0, 0, 0, .3);
+}
+.close_light_box {
+	position:absolute;
+	margin-left:740px;
+	color:#CCCCCC;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	cursor:pointer;
+}
+.photo_next {
+	cursor:pointer;
+	position:absolute; 
+	top:465px; 
+	left:715px;
+}
+.photo_next:hover {
+	top:467px;
+	left:717px
+}
+.photo_prev {
+	cursor:pointer;
+	position:absolute; 
+	top:465px; 
+	left:55px;
+}
+.photo_prev:hover {
+	top:467px;
+	left:57px
+}
+.run_slideshow_div {
+	position:absolute;
+	color:#CCCCCC;
+	font-weight:bold;
+	top:12px; 
+	left:615px;
+}
+.hor_lightbox {
+	width:600px;
+	height:75px;
+	overflow:auto;
+	white-space: nowrap;
+}
+.similar_car {
+	width: 200px;
+	float: left;
+}
+#look_close {
+	margin-left:15px;
+}
+@media only screen and (max-width : 767px) {
+	.evolve_car_body {
+		width:255px;
+	}
+	.car_description {
+		width: 240px;
+	}
+	.photos {
+		width: 250px;
+	}
+	.main_photo {
+		width: 100%;
+		height: auto;
+	}
+	.main_photo img {
+		width: 100%;
+		height: auto;	
+	}
+	.car_contact {
+		width: 235px;
+		height: auto;
+		margin-left: 10px;
+	}
+	.car_contact_info {
+		width: 100%;
+	}
+	.car_contact_buttons {
+		width: 100%;
+	}
+	#tablist li {
+		display: none;
+	}
+	.tab_content_area_container {
+		margin-left: 10px;	
+	}
+	.tab_container, .tab_content_area_container, .tab_content_area, .tab_content {
+		width: 250px;
+	}
+	.tab_inactive_content {
+		display: block;
+	}
+	.staff_card {
+		width:200px !important;
+	}
+	.decode_table {
+		table-layout: fixed; width: 100%
+	}
+	.decode_table td{
+		word-wrap: break-word; width: 100%; overflow:hidden;
+	}
+	.compare {
+		display:none;
+	}
+	.nohor {
+		float:left;width:100% !important;
+	}
+	.photo_thumbs {
+		width: 100%;
+	}
+	#contact_form {
+		font-size:16px;
+		width: 280px;
+		margin-left: -20px !important;
+	}
+	#contact_form fieldset legend {
+		font-size:15px;
+	}
+	
+	#contact_form .search_btn {
+		width:125px;
+		height: 38px !important;
+		font-size:12px !important;
+	}
+	
+	#contact_form input {
+		height:25px;
+		font-size:12px !important;
+		width: 90% !important;
+		margin-left: 2% !important;
+	}
+	
+	#contact_needed {
+		width:260px !important;
+		margin-left:10px !important;
+	}
+	
+	#contact_form select {
+		height:27px;
+		font-size:12px !important;
+	}
+	.cdform label {
+		width: 100% !important;
+		text-align:left !important;
+		margin-left: 5px !important;
+	}
+}
