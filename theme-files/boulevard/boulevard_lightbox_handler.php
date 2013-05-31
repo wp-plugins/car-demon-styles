@@ -103,14 +103,19 @@ function get_boulevard_details($post_id) {
 	} else {
 		$vin_query_decode = '';
 	}
-	if (!empty($vin_query_decode['decoded_fuel_economy_city'])) {
-		$tab_cnt = $tab_cnt + 5;
-		$vin_query = 1;
-		$about_cnt = 7;
-	}
-	else {
+	if (isset($vin_query_decode['decoded_fuel_economy_city'])) {
+		$tab_cnt = 0;
+		if (!empty($vin_query_decode['decoded_fuel_economy_city'])) {
+			$tab_cnt = $tab_cnt + 5;
+			$vin_query = 1;
+			$about_cnt = 7;
+		} else {
+			$vin_query = 0;
+		}
+	} else {
 		$vin_query = 0;
 	}
+	$content = '';
 	if ($vin_query == 1) {
 		$content .= get_vin_query_specs($vin_query_decode, $vehicle_vin);
 		$content .= get_vin_query_safety($vin_query_decode);
@@ -139,7 +144,7 @@ function get_boulevard_details($post_id) {
 	}
 	$photo_count = '';
 	?>
-	<img src="<?php echo $main_photo; ?>" title="<?php echo $title; ?>" class="boulevard_lightbox_detail_main_photo" />
+	<img src="<?php echo $main_photo; ?>" title="<?php echo $car_head_title; ?>" class="boulevard_lightbox_detail_main_photo" />
 		<div class="fin_specs">
 		<?php if (!empty($contact_finance_url)) { 
 				if ($car_contact['finance_popup'] == 'Yes') {
@@ -189,17 +194,17 @@ function get_boulevard_details($post_id) {
 		</ul>
 		<div class="button_box">
 			<div class="buttonlink" onclick="open_car_demon_lightbox_photos('<?php echo $post_id; ?>');">
-				<img src="<?php echo $car_demon_pluginpath; ?>images/photo.png" alt="<?php echo $title; ?> - View photos">View <?php echo $photo_count; ?> Photos
+				<img src="<?php echo $car_demon_pluginpath; ?>images/photo.png" alt="<?php echo $car_head_title; ?> - View photos">View <?php echo $photo_count; ?> Photos
 			</div>
 			<div class="buttonlink" onclick="open_contact_us('<?php echo $post_id; ?>');">
-				<img src="<?php echo $car_demon_pluginpath; ?>images/phone.png" alt="<?php echo $title; ?> - Contact Us">Contact Us
+				<img src="<?php echo $car_demon_pluginpath; ?>images/phone.png" alt="<?php echo $car_head_title; ?> - Contact Us">Contact Us
 			</div>
 			<div class="buttonlink" onclick="email_friend('<?php echo $post_id; ?>');">
-				<img src="<?php echo $car_demon_pluginpath; ?>images/email_go.png" alt="<?php echo $title; ?> - Email a Friend">Email a Friend
+				<img src="<?php echo $car_demon_pluginpath; ?>images/email_go.png" alt="<?php echo $car_head_title; ?> - Email a Friend">Email a Friend
 			</div>
 			<div class="buttonlink" style="margin-right:0px;float:right;">
 				<a class="textLink" href="<?php echo $link; ?>" target="_top">
-					<img src="<?php echo $car_demon_pluginpath; ?>images/information.png" alt="<?php echo $title; ?> - View Details">View Details
+					<img src="<?php echo $car_demon_pluginpath; ?>images/information.png" alt="<?php echo $car_head_title; ?> - View Details">View Details
 				</a>
 			</div>
 		</div>
@@ -221,8 +226,8 @@ function get_boulevard_photo_thumbs($post_id) {
 		$guid = $thumbnail->guid;
 		if (!empty($guid)) {
 			$cnt = $cnt + 1;
-			$car_js .= trim($thumbnail).',';
-			$photo_array = '<li><img class="car_demon_thumbs" style="cursor:pointer" onClick=\'MM_swapImage("car_demon_light_box_main_img","","'.trim($guid).'",1);active_img('.$cnt.')\' src="'.trim($guid).'" width="53" /></li>';
+			$car_js .= 'carImg['.$cnt.']="'.trim($thumbnail).'";'.chr(13);
+			$photo_array = '<img class="car_demon_thumbs" style="cursor:pointer" onClick=\'MM_swapImage("car_demon_light_box_main_img","","'.trim($guid).'",1);active_img('.$cnt.')\' src="'.trim($guid).'" width="53" />';
 			$this_car .= $photo_array;
 		}
 	}
@@ -230,11 +235,13 @@ function get_boulevard_photo_thumbs($post_id) {
 	$stop = 27;
 	$thumbnails = split(",",$image_list);
 	$cnt = 0;
+	$car_js = '';
+	$this_car = '';
 	foreach($thumbnails as $thumbnail) {
 		$pos = strpos($thumbnail,'.jpg');
-		if($pos == true) {
+		if ($pos == true) {
 			if ($cnt < $stop) {
-				$car_js .= trim($thumbnail).',';
+				$car_js .= 'carImg['.$cnt.']="'.trim($thumbnail).'";'.chr(13);
 				$photo_array = '<img class="boulevard_thumbs" style="cursor:pointer" onClick=\'MM_swapImage("car_demon_light_box_main_img","","'.trim($thumbnail).'",1);active_img('.$cnt.');\' src="'.trim($thumbnail).'" width="53" />';
 				$this_car .= $photo_array;
 				$cnt = $cnt + 1;
@@ -247,8 +254,15 @@ function get_boulevard_photo_thumbs($post_id) {
 		<input type="hidden" id="current_img_name" />
 		<input type="hidden" id="current_img_array" value="'.$cnt.'" />
 		<input type="hidden" id="image_count" value="'.$total_pics.'" />
-		';
-	$this_car = $car_js;
+		<script>
+			function photo_img_array() {
+				var carImg = new Array;
+				'.$car_js.'
+				return carImg;
+			}
+			setInterval(function(){car_slide_show()},3000);
+		</script>';
+	$this_car .= $car_js;
 	return $this_car;
 }
 

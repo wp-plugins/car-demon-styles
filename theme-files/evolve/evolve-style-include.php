@@ -60,27 +60,28 @@ function evolve_display_car($post_id) {
 	<div class="description">
 		<div class="description_left">
 			<div class="description_label">Stock #:</div>
-			<div class="description_text"><?php echo $vehicle_stock_number; ?></div>
+			<div class="description_text"><?php echo $vehicle_stock_number; ?>&nbsp;</div>
 			<div class="description_label">Condition:</div>
-			<div class="description_text"><?php echo $vehicle_condition; ?></div>
+			<div class="description_text"><?php echo $vehicle_condition; ?>&nbsp;</div>
 			<div class="description_label">Year:</div>
-			<div class="description_text"><?php echo $vehicle_year; ?></div>
+			<div class="description_text"><?php echo $vehicle_year; ?>&nbsp;</div>
 			<div class="description_label">Make:</div>
-			<div class="description_text"><?php echo $vehicle_make; ?></div>
+			<div class="description_text"><?php echo $vehicle_make; ?>&nbsp;</div>
 			<div class="description_label">Model:</div>
-			<div class="description_text"><?php echo $vehicle_model; ?></div>
+			<div class="description_text"><?php echo $vehicle_model; ?>&nbsp;</div>
 			<div class="description_label">Body Style:</div>
-			<div class="description_text"><?php echo $vehicle_body_style; ?></div>
+			<div class="description_text"><?php echo $vehicle_body_style; ?>&nbsp;</div>
 		</div>
 		<div class="description_right">
 			<div class="description_label">Transmission:</div>
-			<div class="description_text"><?php echo $vehicle_transmission; ?></div>
+			<div class="description_text"><?php echo $vehicle_transmission; ?>&nbsp;</div>
 			<div class="description_label">Mileage:</div>
-			<div class="description_text"><?php echo $vehicle_mileage; ?></div>
+			<div class="description_text"><?php echo $vehicle_mileage; ?>&nbsp;</div>
 			<div class="description_label">Ext. Color:</div>
-			<div class="description_text"><?php echo $vehicle_exterior_color; ?></div>
+			<div class="description_text"><?php echo $vehicle_exterior_color; ?>&nbsp;</div>
+
 			<div class="description_label">Vin Number:</div>
-			<div class="description_text_vin"><?php echo $vehicle_vin; ?></div>
+			<div class="description_text_vin"><?php echo $vehicle_vin; ?>&nbsp;</div>
 		</div>
 	</div>
 	<?php echo get_vehicle_price_style_evolve($post_id); ?>

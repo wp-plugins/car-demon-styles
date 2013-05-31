@@ -107,7 +107,7 @@ if ( have_posts() ) while ( have_posts() ) : the_post();
 			}
 			setInterval(function(){car_slide_show()},3000);
 		</script>';
-	$this_car = $car_js;
+	$this_car .= $car_js;
 	$content = get_the_content();
 	$content = trim($content);
 	if (empty($content)) {

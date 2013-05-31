@@ -26,7 +26,6 @@ if ($_GET['car']) {
 	include('boulevard-style-include.php');
 	include('boulevard-style.php');
 	?>
-				<h1 class="page-title"><?php printf( __( 'Search Results: %s', 'car-demon-styles' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 				<h4 style="margin:0px;"><?php _e('Results Found','car-demon'); echo ': '.$total_results;?></h4>
 				<?php echo $searched; ?>
 				<?php if ( $search_query->max_num_pages > 1 ) : ?>

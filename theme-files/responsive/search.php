@@ -13,15 +13,15 @@ include('responsive-style-include.php');
 <div id="content-archive" class="grid col-620 listing">
 <?php if ( $search_query->have_posts() ) { ?>
         <?php $options = get_option('responsive_theme_options'); ?>
-		    <h6>
-				<?php _e( 'Current Inventory', 'car-demon-styles' ); ?>
-			</h6>
+			<h4 class="results_found"><?php _e('Results Found','car-demon'); echo ': '.$total_results;?></h4>
         <?php 
 		echo $_SESSION['car_demon_options']['before_listings'];
 		echo car_demon_sorting('search');
 		if (isset($_GET['car'])) {
-			echo $searched; 
-			echo car_demon_nav('top', $search_query);
+			echo $searched;
+			if ($total_results > 9) {
+				echo car_demon_nav('top', $search_query);
+			}
 			while ( $search_query->have_posts() ) : $search_query->the_post();
 				$post_id = $post->ID;
 				echo '<div class="hentry">';
@@ -30,7 +30,9 @@ include('responsive-style-include.php');
 			endwhile;
 		}
 		echo '<div class="hentry">';
-			echo car_demon_nav('bottom', $search_query);
+			if ($total_results > 9) {
+				echo car_demon_nav('bottom', $search_query);
+			}
 		echo '</div>';
 		echo '<div class="hentry"><div class="post-entry"></div></div>';
 	} ?>

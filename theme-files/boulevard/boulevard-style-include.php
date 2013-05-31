@@ -32,7 +32,7 @@ function boulevard_display_car($post_id) {
 		$compare = '<input'.$in_compare.' id="compare_'.$post_id.'" title="Compare" type="checkbox" onclick="update_car('.$post_id.',this);" />';
 	}
 	$link = get_permalink($post_id);
-	if ($_COOKIE["sales_code"]) {
+	if (isset($_COOKIE["sales_code"])) {
 		$link = $link .'?sales_code='.$_COOKIE["sales_code"];
 	}
 	$main_photo = wp_get_attachment_thumb_url( get_post_thumbnail_id( $post_id ) );
@@ -57,7 +57,21 @@ function boulevard_display_car($post_id) {
 									<div class="itemphoto"><img onclick="open_car_demon_lightbox_photos('<?php echo $post_id; ?>');" src="<?php echo $main_photo; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>" class="fs10 text" style="width:107px; height:80px; border:none;"></div>
 								</td>
 								<td class="iteminfo0">
-									<p><strong>Engine:</strong>&nbsp;<?php echo $vehicle_engine; ?></p><p><strong>Transmission:</strong>&nbsp;<?php echo $vehicle_transmission; ?></p><p><strong>Mileage:</strong>&nbsp;<?php echo $vehicle_mileage; ?> Miles</p>
+											<div style="height:17px">
+												<div class="itemcolort">Engine:</div>
+												<div class="itemcolor"><?php echo $vehicle_engine; ?></div>
+												<div style="clear:both"></div>
+											</div>
+											<div style="height:17px">
+												<div class="itemcolort">Trans:</div>
+												<div class="itemcolor"><?php echo $vehicle_transmission; ?></div>
+												<div style="clear:both"></div>
+											</div>
+											<div style="height:17px">
+												<div class="itemcolort">Mileage:</div>
+												<div class="itemcolor"><?php echo $vehicle_mileage; ?></div>
+												<div style="clear:both"></div>
+											</div>
 											<div style="height:17px">
 												<div class="itemcolort">Exterior:</div>
 												<div class="itemcolor"><?php echo $vehicle_exterior_color; ?></div>
@@ -94,7 +108,7 @@ function boulevard_display_car($post_id) {
 							<img src="<?php echo $car_demon_pluginpath; ?>images/zoom.png" alt="<?php echo $title; ?> - View Details">Overview
 						</div>
 
-						<div class="stocknumquotelink" style="width: 186px; position: relative;">
+						<div class="stocknumquotelink" style="width: 146px; position: relative;">
 							<div class="stocknumforitem" style="position: absolute; top: -20px; right: 0px;">
 								Stock<span class="fbold"># B1249935</span>
 							</div>
@@ -190,7 +204,7 @@ function boulevard_count_photos($post_id) {
 		$thumbnails = get_children( array('post_parent' => $post_id, 'post_type' => 'attachment', 'post_mime_type' =>'image') );
 		$total_pics = count($thumbnails);
 	}
-	if ($total_pics > 27) { $total_pics = 27; }
+//	if ($total_pics > 27) { $total_pics = 27; }
 	return $total_pics;
 }
 ?>

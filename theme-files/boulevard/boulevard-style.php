@@ -214,4 +214,17 @@
 		-webkit-box-shadow: 0px 0px 4px #929292;
 		box-shadow: 0px 0px 4px #929292;
 	}
+	.hor_lightbox {
+		width: 600px;
+		height: 75px;
+		overflow: auto;
+		white-space: nowrap;
+		margin-left: 100px;
+	}
+	#car_demon_light_box_main_img {
+		margin-left: -75px;
+	}
+	.run_slideshow_div {
+		display: none !important;
+	}
 </style>

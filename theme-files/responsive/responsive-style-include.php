@@ -119,22 +119,38 @@ function get_vehicle_price_style_responsive($post_id) {
 		$your_price = $vehicle_price;
 		$spacer = "";
 		if (!empty($selling_price)) {
-			$price .= '<div class="price_label">'.__('Selling Price', 'car-demon').'</div><div class="price_value"> $'. $selling_price .'</div>';
+			$selling_price_label = get_post_meta($post_id, '_msrp_label', true);
+			if (empty($selling_price_label)) {
+				$selling_price_label = __('Selling Price', 'car-demon');
+			}
+			$price .= '<div class="price_label">'.$selling_price_label.'</div><div class="price_value"> $'. $selling_price .'</div>';
 		}
 		if (!empty($rebate)) {
-			$price .= '<div class="price_label">'.__('Rebate', 'car-demon').'</div><div class="price_value"> $'. $rebate .'</div>';
+			$rebate_label = get_post_meta($post_id, '_rebate_label', true);
+			if (empty($rebate_label)) {
+				$rebate_label = __('Rebate', 'car-demon');
+			}
+			$price .= '<div class="price_label">'.$rebate_label.'</div><div class="price_value"> $'. $rebate .'</div>';
 		}
 		else {
 			$spacer = '<div class="price_label">&nbsp;</div><div class="price_value"></div>';
 		}
 		if (!empty($dealer_discount)){
-			$price .= '<div class="price_label">'.__('Xtra Discount', 'car-demon').'</div><div class="price_value"> $'. $dealer_discount .'</div>';
+			$discount_label = get_post_meta($post_id, '_discount_label', true);
+			if (empty($discount_label)) {
+				$discount_label = __('Xtra Discount', 'car-demon');
+			}
+			$price .= '<div class="price_label">'.$discount_label.'</div><div class="price_value"> $'. $dealer_discount .'</div>';
 		}
 		else {
 			$spacer = '<div class="price_label">&nbsp;</div><div class="price_value"></div>';
 		}
+		$price_label = get_post_meta($post_id, '_price_label', true);
+		if (empty($price_label)) {
+			$price_label = __('Your Price', 'car-demon');
+		}
 		$price .= '<div class="price_line">&nbsp;</div>';
-		$price .= '<div class="final_price_label">'.__('YOUR PRICE', 'car-demon').': </div>';
+		$price .= '<div class="final_price_label">'.$price_label.': </div>';
 		$price .= '<div class="final_price_value">$' .$your_price .'</div>';
 	}
 	else {
@@ -142,7 +158,7 @@ function get_vehicle_price_style_responsive($post_id) {
 			$price .= '<div class="no_price_style">'.get_option($vehicle_location_slug.'_no_new_price').get_option($vehicle_location_slug.'_new_sales_number').'</div>';
 		}
 		else {
-			$price .= '<div class="no_price_style">'.get_option($vehicle_location_slug.'_no_used_price').get_option($vehicle_location_slug.'_used_sales_number').'</div>';
+			$price .= '<div class="no_price_style">'.get_option($vehicle_location_slug.'_no_used_price').'<br />'.get_option($vehicle_location_slug.'_used_sales_number').'</div>';
 		}
 	}
 	$sold_status = get_post_meta($post_id, "sold", true);
