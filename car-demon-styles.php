@@ -4,7 +4,7 @@ Plugin Name: Car Demon Styles
 Plugin URI: http://www.CarDemons.com/
 Description:  Different Styles for your Car Demon install.
 Author: CarDemons
-Version: 1.0.0
+Version: 1.0.1
 Author URI: http://www.CarDemons.com/
 
 */
@@ -19,7 +19,7 @@ add_action('admin_menu', 'car_demon_style_settings_page');
 
 function car_demon_styles() {
 	// Array containing all style slugs, to add a new style add a slug for it then add a folder with that slug name and your template files
-	$car_demon_styles = 'default, avenue, boulevard, highway, racetrack, suffusion, catch_box, responsive, evolve';
+	$car_demon_styles = 'default, avenue, boulevard, highway, racetrack, suffusion, catch_box, responsive, evolve, neuro';
 	$car_demon_styles = explode(',',$car_demon_styles);
 	return $car_demon_styles;
 }
@@ -38,10 +38,11 @@ function car_demon_style_options_do_page() {
 	echo '<form action="" method="post" />';
 		$car_demon_styles = car_demon_styles();
 		$vehicle_list_styles = '';
-		$vehicle_page_style = '';
+		$vehicle_page_styles = '';
 		foreach ($car_demon_styles as $car_demon_style) {
 			$current_style = trim($car_demon_style);
 			${$current_style.'_check'} = '';
+			${$current_style.'_check_page'} = '';
 			if (isset($car_demon_options['car_demon_style'])) {
 				if ($car_demon_options['car_demon_style'] == $current_style) { ${$current_style.'_check'} = ' checked'; }
 			}
@@ -52,11 +53,11 @@ function car_demon_style_options_do_page() {
 			$style_name = ucwords($style_name);
 			$vehicle_list_styles .= '<div class="cd_style_selection" />';
 				$vehicle_list_styles .= '<input type="radio" name="car_demon_style" value="'.$current_style.'"'.${$current_style.'_check'}.' />&nbsp;'.$style_name.'<br />';
-				$vehicle_list_styles .= '<img src="'.$car_demon_pluginpath.'images/'.$current_style.'.png" />';
+//				$vehicle_list_styles .= '<img src="'.$car_demon_pluginpath.'images/'.$current_style.'.png" />';
 			$vehicle_list_styles .= '</div>';
 			$vehicle_page_styles .= '<div class="cd_style_selection" />';
 				$vehicle_page_styles .= '<input type="radio" name="car_demon_page_style" value="'.$current_style.'"'.${$current_style.'_check_page'}.' />&nbsp;'.$style_name.'<br />';
-				$vehicle_page_styles .= '<img src="'.$car_demon_pluginpath.'images/'.$current_style.'_page.png" />';
+//				$vehicle_page_styles .= '<img src="'.$car_demon_pluginpath.'images/'.$current_style.'_page.png" />';
 			$vehicle_page_styles .= '</div>';
 		}
 		echo '<h2>Vehicle List Style</h2>';
