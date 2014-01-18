@@ -1,4 +1,8 @@
 /* CSS Document */
+.single .sidebar-right {
+	margin-left: 7% !important;
+	width: 30% !important;
+}
 .evolve_car_body {
 	padding: 5px;
 	clear: both;

@@ -182,7 +182,6 @@
 		text-align:right;
 	}
 }
-
 .car_item {
 	moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
@@ -193,7 +192,6 @@
 	padding: 5px;
 	margin-left:3px;
 }
-
 .listing {
 	float:left;
 }
@@ -225,4 +223,7 @@
 }
 .wp-pagenavi .pages {
 	display:none;
+}
+.listing .hentry {
+	border-bottom: 0px !important;	
 }
