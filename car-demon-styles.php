@@ -4,40 +4,26 @@ Plugin Name: Car Demon Styles
 Plugin URI: http://www.CarDemons.com/
 Description:  Different Styles for your Car Demon install.
 Author: CarDemons
-Version: 1.0.3
+Version: 1.0.2
 Author URI: http://www.CarDemons.com/
+
 */
-
-function car_demon_styles_activate() {
-	$car_demon_options = array();
-	$car_demon_options = get_option( 'car_demon_options', $default );
-	$car_demon_options['use_theme_files'] = 'No';
-	$car_demon_options['car_demon_style'] = 'responsive';
-	$car_demon_options['car_demon_page_style'] = 'evolve';
-	update_option( 'car_demon_options', $car_demon_options );
-}
-register_activation_hook( __FILE__, 'car_demon_styles_activate' );
-
-function car_demon_styles_deactivate() {
-	$car_demon_options = array();
-	$car_demon_options = get_option( 'car_demon_options', $default );
-	$car_demon_options['use_theme_files'] = 'Yes';
-	update_option( 'car_demon_options', $car_demon_options );
-}
-register_deactivation_hook( __FILE__, 'car_demon_styles_deactivate' );
 
 add_action("template_redirect", 'car_demon_styles_theme_redirect');
 include('car-demon-styles-include.php');
+
 function car_demon_style_settings_page() {
 	add_theme_page( 'Car Demon Styles', 'Car Demon Styles', 'switch_themes', 'car_demon_style_options', 'car_demon_style_options_do_page');
 }
 add_action('admin_menu', 'car_demon_style_settings_page');
+
 function car_demon_styles() {
 	// Array containing all style slugs, to add a new style add a slug for it then add a folder with that slug name and your template files
-	$car_demon_styles = 'default, avenue, boulevard, highway, racetrack, suffusion, catch_box, responsive, evolve, neuro, cyberchimps_pro,guy';
+	$car_demon_styles = 'default, avenue, boulevard, highway, racetrack, suffusion, catch_box, responsive, evolve, neuro';
 	$car_demon_styles = explode(',',$car_demon_styles);
 	return $car_demon_styles;
 }
+
 function car_demon_style_options_do_page() {
 	$car_demon_pluginpath = str_replace(str_replace('\\', '/', ABSPATH), get_option('siteurl').'/', str_replace('\\', '/', dirname(__FILE__))).'/';
 	$car_demon_options = get_option('car_demon_options');
@@ -47,6 +33,7 @@ function car_demon_style_options_do_page() {
 		update_option( 'car_demon_options', $car_demon_options );
 	}
 	wp_enqueue_style('car-demon-style-admin-css', WP_CONTENT_URL . '/plugins/car-demon-styles/car-demon-styles-admin.css');
+
 	echo '<h1>Car Demon Styles</h1>';
 	echo '<form action="" method="post" />';
 		$car_demon_styles = car_demon_styles();
@@ -79,11 +66,13 @@ function car_demon_style_options_do_page() {
 			echo '<h2>Vehicle Page Style</h2>';
 		echo '</div>';
 			echo $vehicle_page_styles;
+
 		echo '<div class="cd_style_submit_holder" />';
 			echo '<br /><input type="submit" name="submit" id="submit" class="button-primary" value="Save Changes">';
 			echo '</div>';
 	echo '</form>';
 }
+
 function car_demon_styles_theme_redirect() {
 	if ($_SESSION['car_demon_options']['use_theme_files'] != 'Yes') {
 		if (isset($_SESSION['car_demon_options']['is_mobile'])) {
@@ -117,11 +106,16 @@ function car_demon_styles_theme_redirect() {
 				$search = '';
 			}
 			if ($post_type == 'cars_for_sale') {
-				if ($wp->query_vars["cars_for_sale"]) {
-					$templatefilename = 'single-cars_for_sale.php';
+				if (isset($wp->query_vars["cars_for_sale"])) {
+					if ($wp->query_vars["cars_for_sale"]) {
+						$templatefilename = 'single-cars_for_sale.php';
+					} else {
+						$templatefilename = 'archive-cars_for_sale.php';
+						$theme_page_style = $theme_style;
+					}
 				} else {
-					$templatefilename = 'archive-cars_for_sale.php';
-					$theme_page_style = $theme_style;
+						$templatefilename = 'archive-cars_for_sale.php';
+						$theme_page_style = $theme_style;
 				}
 				if (file_exists($template_directory . '/' . $templatefilename)) {
 					$return_template = $template_directory . '/' . $templatefilename;
@@ -224,6 +218,7 @@ function car_demon_styles_theme_redirect() {
 		}
 	}
 }
+
 function do_car_demon_styles_theme_redirect($url) {
     global $post, $wp_query;
     if (have_posts()) {
@@ -233,6 +228,7 @@ function do_car_demon_styles_theme_redirect($url) {
         $wp_query->is_404 = true;
     }
 }
+
 function car_demon_style_deactivation($newname, $newtheme) {
 	// Switch Car Demon Style if Predetermined Theme has been activated, if not it sets it back to default style.
 	$car_demon_options = get_option('car_demon_options');
@@ -252,4 +248,5 @@ function car_demon_style_deactivation($newname, $newtheme) {
 	update_option( 'car_demon_options', $car_demon_options );
 }
 add_action("switch_theme", "car_demon_style_deactivation", 10 , 2);
+
 ?>
